@@ -1,55 +1,52 @@
 require 'pry' 
 
 class Song 
-  attr_accessor :name, :artist, :genre
   
+  attr_accessor :name, :artist, :genre 
   @@count = 0 
   @@genres = []
   @@artists = []
   
-  def initialize(song_name, artist, genre)
-    @name = song_name
+  def initialize(name, artist, genre) 
+    @name = name
     @artist = artist
-    @genre = genre 
-    @@count += 1 
-    @@genres << @genre 
+    @genre = genre
+    @@count += 1
     @@artists << @artist
-    
+    @@genres << @genre
   end
   
-  def self.count 
-    @@count
-  end
-  
-  def self.genres 
-    @@genres.uniq!
+  def self.count
+    @@count 
   end
   
   def self.artists
-    @@artists.uniq!
+    @@artists.uniq
+  end
+  
+  def self.genres
+    @@genres.uniq
   end
 
-def self.genre_count
-  genre_count = {}
-  @@genres.each do |genre|
-    if genre_count[genre]
-      genre_count[genre] += 1 
-    else 
-      genre_count[genre] = 1 
+  def self.genre_count
+    gen_count = {}
+    
+    @@genres.each do |gen, num|
+      if gen_count.include?(gen)
+        num + 1 
+      else
+      gen_count = {gen => num}
+    end
   end
-end
-genre_count
-end
-
-def self.artist_count
-  artist_count = {}
-  @@artists.each do |artist|
-    if artist_count[artist]
-      artist_count[artist] += 1 
-    else 
-      artist_count[artist] = 1 
-  end
-end
-artist_count 
-end
+  
+#  def @@artist_count(artist, number)
+#    artist_counts = {}
+#    @@genre.each do |art, num| 
+#      art ||= {}
+#      artist_counts[art] = num
+#    end
+#    artist_counts
+# end
+  
+  
 end
