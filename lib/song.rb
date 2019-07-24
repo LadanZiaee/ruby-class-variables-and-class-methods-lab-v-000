@@ -32,10 +32,11 @@ class Song
     gen_count = {}
     
     @@genres.each do |gen, num|
+      gen_count = {gen => num}
       if gen_count.include?(gen)
         num + 1 
       else
-      gen_count = {gen => num}
+      
     end
   end
   
