@@ -29,15 +29,7 @@ class Song
   end
 
   def self.genre_count
-    gen_count = {}
-    
-    @@genres.each do |gen, num|
-      gen_count = {gen => num}
-      if gen_count.include?(gen)
-        num + 1 
-      else
-      
-    end
+    Hash[*data.group_by{ |v| v }.flat_map{ |k, v| [k, v.size] }]
   end
   
 #  def @@artist_count(artist, number)
